@@ -1,25 +1,33 @@
-﻿<!DOCTYPE html>
-
-<html>
+﻿
+<!DOCTYPE html>
+<html class="h-100">
 <head>
-	<meta name="viewport" content="width=device-width" />
-	<title>Index</title>
+    <meta name="viewport" content="width=device-width" />
+    <title>Home Page</title>
 
-	<link href="~/Content/bootstrap.min.css" rel="stylesheet" />
-	<link href="~/Content/Site.css" rel="stylesheet" />
+    <!-- Optimized: Replaced hardcoded links with the Bundle -->
+    @Styles.Render("~/Styles/bootstrap")
 </head>
-<body>
-	<div class="container">
-		<h1>
-			Hello, World!
-		</h1>
-	</div>
+<body class="h-100">
+    <div class="container h-100">
+        <div class="d-flex flex-column justify-content-center align-content-center h-100 bg-light">
+            
+            <img src="~/Content/Images/random-school.png" class="img-thumbnail rounded mx-auto mb-4" width="200" height="200"  />
 
-	<script src="~/Scripts/jquery-3.4.1.min.js"></script>
-	<script src="~/Scripts/bootstrap.min.js"></script>
-	<script src="~/Scripts/vue.min.js"></script>
+            <h1 class="text-center">
+                Hello, It is nice to see you Here!
+            </h1>
 
-	<script>
-	</script>
+            <p class="text-center">Just want to know if you are excited to be part of our School. Are you ready?</p>
+
+            <!-- Optimized: Dynamic MVC Routing -->
+            @Html.ActionLink("Click here to enroll", "Index", "Student", null, new { @class = "link text-center mt-5" })
+            @Html.ActionLink("Click here download the enrollment form", "OpenSchoolEnrollmentForm", "Home", null, new { @class = "link text-success text-center mt-2" })
+        </div>                          
+
+    </div>
+
+    <!-- This expects "~/Scripts/ui" to exist in BundleConfig.cs -->
+    @Scripts.Render("~/Scripts/ui")
 </body>
 </html>

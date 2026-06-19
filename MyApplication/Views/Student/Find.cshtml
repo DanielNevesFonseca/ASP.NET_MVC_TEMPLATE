@@ -1,0 +1,24 @@
+
+<!DOCTYPE html>
+<html class="h-100">
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Student Page</title>
+
+    <!-- Optimized: Replaced hardcoded links with the Bundle -->
+    @Styles.Render("~/Styles/bootstrap")
+</head>
+<body class="h-100">
+    <div class="container h-100">
+        <div class="d-flex flex-column justify-content-center align-content-center h-100 bg-light">
+            <img src="~/Content/Images/random-school.png" class="img-thumbnail rounded mx-auto mb-4" width="200" height="200" />
+
+            <h1 class="text-center">
+                Hello, Student: @ViewBag.CurrentStudentId
+            </h1>
+        </div>
+    </div>
+
+    @Scripts.Render("~/Scripts/ui")
+</body>
+</html>

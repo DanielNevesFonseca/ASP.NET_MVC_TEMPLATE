@@ -1,0 +1,89 @@
+
+@model IEnumerable<MyApplication.Models.Student>
+
+@{
+    ViewBag.Title = "Student Page";
+}
+
+
+<!DOCTYPE html>
+<html class="h-100">
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Student Page</title>
+
+    <!-- Optimized: Replaced hardcoded links with the Bundle -->
+    @Styles.Render("~/Styles/bootstrap")
+</head>
+<body class="h-100">
+    <div class="container h-100">
+        <div class="d-flex flex-column justify-content-center align-content-center h-100 bg-light">
+
+            @Html.ActionLink("Go to Home Page", "Index", "Home", null, new { @class = "link text-center mb-5" })
+
+            <img src="~/Content/Images/random-school.png" class="img-thumbnail rounded mx-auto mb-4" width="200" height="200" />
+
+            <h1 class="text-center">
+                Hello, Student!
+            </h1>
+
+            <!-- Optimized: Dynamic MVC Routing -->
+            @Html.ActionLink("Register New Student", "Register", "Student", null, new { @class = "link text-center mb-5" })
+
+            <section class="px-5">
+                <table class="table-hover table">
+                    <thead>
+                        <tr>
+                            <th scope="col">ID</th>
+                            <th scope="col">Name</th>
+                            <th scope="col">Email</th>
+                            <th scope="col">Age</th>
+                            <th scope="col">Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var student in Model)
+                        {
+                            <tr>
+                                <td>@student.Id</td>
+                                <td>@student.Name</td>
+                                <td>@student.Email</td>
+                                <td>@student.Age</td>
+                                <td class="d-flex align-items-center gap-2">
+                                    @Html.ActionLink("Edit", "Edit", new { id = student.Id })
+                                    <span>|</span>
+                                    <button class="btn btn-link" onclick="deleteStudent(@student.Id)">Remove</button>
+                                </td>
+                            </tr>
+                        }
+
+                    </tbody>
+                </table>
+            </section>
+
+        </div>
+
+    </div>
+
+    <!-- This expects "~/Scripts/ui" to exist in BundleConfig.cs -->
+    @Scripts.Render("~/Scripts/ui")
+    <script>
+           function deleteStudent(studentId) {
+               if (confirm(`Are you sure you want to remove student: ${studentId}?`)) {
+                   fetch('@Url.Action("Remove", "Student")?id=' + studentId, {
+                       method: 'POST'
+                   }).then(response => {
+                       if (response.ok) {
+                           window.location.reload();
+                       } else {
+                           alert("Error: Couldn't performe deletion...")
+                       }
+                   }).catch((err) => {
+                       console.error("Unknown Error: ", err)
+                   })
+               }
+           }
+    </script>
+
+</body>
+</html>

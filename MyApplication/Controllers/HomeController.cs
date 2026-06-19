@@ -1,17 +1,24 @@
-﻿//using System.Linq;
+﻿using System.Web.Mvc;
 
 namespace MyApplication.Controllers
 {
-	public partial class HomeController : Infrastructure.BaseController
-	{
-		public HomeController() : base()
-		{
-		}
+    public partial class HomeController : Infrastructure.BaseController
+    {
+        public HomeController() : base()
+        {
+        }
 
-		[System.Web.Mvc.HttpGet]
-		public virtual System.Web.Mvc.ViewResult Index()
-		{
-			return View();
-		}
-	}
+        [HttpGet]
+        public virtual ViewResult Index()
+        {
+            return View();
+        }
+
+
+        public FileResult OpenSchoolEnrollmentForm()
+        {
+            string filePath = Server.MapPath("~/Content/files/school-enrrolment.pdf");
+            return File(filePath, "application/pdf", "SchoolEnrollment.pdf");
+        }
+    }
 }
