@@ -1,4 +1,5 @@
 using System.Web.Optimization;
+using System.Web.Mvc;
 
 namespace MyApplication
 {
@@ -11,13 +12,16 @@ namespace MyApplication
         protected void Application_Start()
         {
             // 1. Areas must ALWAYS be first
-            System.Web.Mvc.AreaRegistration.RegisterAllAreas();
+            AreaRegistration.RegisterAllAreas();
+
+            FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
 
             // 2. Routes come second
             RouteConfig.RegisterRoutes(System.Web.Routing.RouteTable.Routes);
 
             // 3. Bundles come last
             BundleConfig.RegisterBundles(BundleTable.Bundles);
+
         }
     }
 }

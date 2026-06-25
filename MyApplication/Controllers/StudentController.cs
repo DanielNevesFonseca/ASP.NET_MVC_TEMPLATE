@@ -1,4 +1,5 @@
 using MyApplication.Models;
+using System;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
@@ -30,14 +31,22 @@ namespace MyApplication.Controllers
             base.Dispose(disposing);
         }
 
+        [OutputCache(Duration = 100)]
         [HttpGet]
         public ViewResult Index()
         {
-            List<Student> students = _dbContext.Students.OrderBy(std => std.Id).ToList();
+            List<Student> students = new List<Student>();
 
+
+            try
+            {
+                students = _dbContext.Students.OrderBy(std => std.Id).ToList();
+            }
+            catch
+            {
+                Console.WriteLine("Error DB!");
+            }
             return View(students);
-
-            //return $"This is a dummy text for learning purposes! -> Student Id: {Id}";
         }
 
         [HttpGet]
@@ -95,7 +104,7 @@ namespace MyApplication.Controllers
         [ActionName("Register")]
         public ActionResult Register(Student student)
         {
-            student.Email.ToLower().Trim();
+            student.Email = student.Email.ToLower().Trim();
 
             _dbContext.Students.Add(student);
 

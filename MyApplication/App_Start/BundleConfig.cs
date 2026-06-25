@@ -7,14 +7,15 @@ namespace MyApplication
     {
         public static void RegisterBundles(BundleCollection bundles)
         {
-            bundles.Add(new ScriptBundle("~/Scripts/ui").Include(
-                "~/Scripts/jquery-3.4.1.min.js",
+            bundles.Add(new ScriptBundle("~/bundles/scripts").Include(
+                "~/Scripts/jquery-3.4.1.slim.min.js",
+                "~/Scripts/umd/popper.min.js",
                 "~/Scripts/bootstrap.min.js",
                 "~/Scripts/vue.min.js"
                 )
             );
 
-            bundles.Add(new StyleBundle("~/Styles/bootstrap").Include(
+            bundles.Add(new StyleBundle("~/bundles/styles").Include(
                 "~/Content/bootstrap.min.css",
                 "~/Content/Site.css"
                 ));

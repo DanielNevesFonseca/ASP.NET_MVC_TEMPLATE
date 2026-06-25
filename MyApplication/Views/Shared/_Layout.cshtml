@@ -1,0 +1,44 @@
+
+<!DOCTYPE html>
+<html style="height: 100dvh">
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+
+    @Styles.Render("~/bundles/styles")
+</head>
+<body class="h-100">
+    <div class="container h-100 d-flex flex-column justify-content-between">
+        <nav class="navbar navbar-light bg-white">
+            <a class="navbar-brand" href="#">
+                <img src="~/Content/Images/random-school.png" width="30" height="30" alt="">
+            </a>
+
+            <ul class="d-flex gap-3 align-items-center navbar" style="list-style-type: none">
+                <li class="nav-item active">
+                    <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Features</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Pricing</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+                </li>
+            </ul>
+        </nav>
+
+        <div class="d-flex flex-column justify-content-center align-content-center bg-light h-100">@RenderBody()</div>
+
+        <footer class="footer mt-auto py-3">
+            <div class="container">
+                <span class="text-muted">Place sticky footer content here.</span>
+            </div>
+        </footer>
+    </div>
+
+    @Scripts.Render("~/bundles/scripts")
+</body>
+</html>

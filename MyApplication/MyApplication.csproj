@@ -279,9 +279,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\BundleConfig.cs" />
+    <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\StudentController.cs" />
+    <Compile Include="Filters\LogFilter.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -293,7 +295,12 @@
     <Compile Include="Migrations\202606180231537_InitialCreate.Designer.cs">
       <DependentUpon>202606180231537_InitialCreate.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202606192254336_StudentRestrictsRules.cs" />
+    <Compile Include="Migrations\202606192254336_StudentRestrictsRules.Designer.cs">
+      <DependentUpon>202606192254336_StudentRestrictsRules.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Models\Course.cs" />
     <Compile Include="Models\MVCDbContext.cs" />
     <Compile Include="Models\Student.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -313,6 +320,9 @@
     <Content Include="Views\Student\Find.cshtml" />
     <Content Include="Views\Student\Register.cshtml" />
     <Content Include="Views\Student\Edit.cshtml" />
+    <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\_ViewStart.cshtml" />
+    <Content Include="Views\Shared\Error.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -322,7 +332,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\Shared\" />
+    <Folder Include="Areas\Course\" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
@@ -334,6 +344,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\202606180231537_InitialCreate.resx">
       <DependentUpon>202606180231537_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202606192254336_StudentRestrictsRules.resx">
+      <DependentUpon>202606192254336_StudentRestrictsRules.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
